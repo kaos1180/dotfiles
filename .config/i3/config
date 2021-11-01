@@ -8,21 +8,47 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 
+# FOR FASTER WINDOW MOVEMENT
+
+bindsym $mod+Shift+Left move left 100 px
+bindsym $mod+Shift+Right move right 100 px
+bindsym $mod+Shift+Up move up 100 px
+bindsym $mod+Shift+Down move down 100 px
+
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+exec_always redshift -O 3800
+bindsym $mod+Shift+z exec  redshift -x
+
+
+
+bindsym $mod+Shift+p exec pavucontrol
 set $mod Mod4
 
+
+
+focus_follows_mouse no
 exec_always rclone mount --daemon  gdrive: /home/kaiser/gdrive/
 
 bindsym $mod+shift+x exec gnome-system-monitor
 
 
-## For Wallpaper
-#exec feh --no-fehbg --bg-fill '/home/kaiser/Pictures/"feelings.jpg"'
+#i3 - GAPS 
+gaps inner 8 gaps outer 3
+for_window [class=".*"] border pixel 2
 
-exec_always feh --bg-scale Pictures/flash.jpg 
+
+
+
+#For Wallpaper
+
+exec_always --no-startup-id feh --bg-scale ~/Pictures/city-night-1
 
 ## To disable titlebar for firefox popup windows 
 
 for_window [title="Picture-in-Picture"] border pixel 0
+
+exec_always --no-startup-id pasystray
 
 #pico the compositor 
 
@@ -39,7 +65,7 @@ bindsym $mod+shift+v exec telegram-desktop
 bindsym Print exec flameshot gui
 
 ## for volume icon 
-exec volumeicon 
+#exec volumeicon 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:System San Francisco Display 9
@@ -77,12 +103,12 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 ## start dmenu (a program launcher)
-##bindsym $mod+d exec --no-startup-id dmenu_run
+#bindsym $mod+d exec --no-startup-id dmenu_run
 
 #start rofi 
+bindsym $mod+d exec  rofi -show run
 
 
-bindsym $mod+d exec rofi -show run
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -108,10 +134,10 @@ bindsym $mod+Shift+k move down
 bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left 
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+#bindsym $mod+Shift+Left move left 
+#bindsym $mod+Shift+Down move down
+#bindsym $mod+Shift+Up move up
+#bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+h split h
@@ -202,10 +228,10 @@ mode "resize" {
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 100 px or 100 ppt
+        bindsym Down resize grow height 100 px or 100 ppt
+        bindsym Up resize shrink height 100 px or 100 ppt
+        bindsym Right resize grow width 100 px or 100 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -227,3 +253,4 @@ bar {
 
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
+
