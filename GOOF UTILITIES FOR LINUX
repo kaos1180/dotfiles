@@ -1,0 +1,7 @@
+renameutils,
+
+renameutils - A set of programs designed to make renaming of files faster and less cumbersome
+
+imv : interactive rename
+
+qmv : rename files by editing a text file with the file names
